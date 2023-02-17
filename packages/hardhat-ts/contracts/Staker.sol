@@ -15,7 +15,7 @@ contract Staker {
 
   event Stake(address indexed sender, uint256 amount);
 
-  constructor(address exampleExternalContractAddress) public {
+  constructor(address exampleExternalContractAddress) {
     exampleExternalContract = ExampleExternalContract(exampleExternalContractAddress);
   }
 
@@ -24,7 +24,7 @@ contract Staker {
   function stake() public payable {
     balances[msg.sender] += msg.value;
     emit Stake(msg.sender, msg.value);
-    console.log('Stake: %s', msg.value);
+    console.log('Stake: %s, Sender: %s', msg.value, msg.sender);
   }
 
   // TODO: After some `deadline` allow anyone to call an `execute()` function
@@ -51,4 +51,19 @@ contract Staker {
   }
 
   // TODO: Add the `receive()` special function that receives eth and calls stake()
+  receive() external payable {
+    stake();
+  }
+
+  modifier notCompleted() {
+    require(!exampleExternalContract.completed(), 'Already completed');
+    _;
+  }
+
+  function withdraw() public notCompleted {
+    require(openForWithdraw, 'Not open for withdraw');
+    uint256 amount = balances[msg.sender];
+    balances[msg.sender] = 0;
+    payable(msg.sender).transfer(amount);
+  }
 }
