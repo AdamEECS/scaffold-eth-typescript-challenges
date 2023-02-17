@@ -18,7 +18,7 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironmentExtended) => {
 
   // Todo: transfer tokens to frontend address
   // const result = await yourToken.transfer("0x18fFE4dADcCe63A074Ef9cfe327cAb9AD4Ad9f76", ethers.utils.parseEther("1000") );
-  const result = await yourToken.transfer("0x7fd37e595aF288e5C9CAD0A5CbE289a9E5E2a322", parseEther("1000") );
+  // const result = await yourToken.transfer("0x7fd37e595aF288e5C9CAD0A5CbE289a9E5E2a322", parseEther("1000") );
 
   // ToDo: To take ownership of yourContract using the ownable library uncomment next line and add the
   // address you want to be the owner.
