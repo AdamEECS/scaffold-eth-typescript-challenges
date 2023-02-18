@@ -62,8 +62,7 @@ export const MainPageFooter: FC<IMainPageFooterProps> = (props) => {
             //   window.open('https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA');
             // }}
             size="large"
-            shape="round"
-            >
+            shape="round">
             <span
               style={{
                 marginRight: 8,
@@ -81,17 +80,17 @@ export const MainPageFooter: FC<IMainPageFooterProps> = (props) => {
         <Col span={24}>
           {
             /*  if the local provider has a signer, let's show the faucet:  */
-            faucetAvailable &&
-            props.scaffoldAppProviders?.mainnetProvider &&
-            props.scaffoldAppProviders?.localProvider ? (
-              <Faucet
-                localProvider={props.scaffoldAppProviders.localProvider}
-                price={props.price}
-                mainnetProvider={props.scaffoldAppProviders.mainnetProvider}
-              />
-            ) : (
-              <></>
-            )
+            // faucetAvailable &&
+            // props.scaffoldAppProviders?.mainnetProvider &&
+            // props.scaffoldAppProviders?.localProvider ? (
+            //   <Faucet
+            //     localProvider={props.scaffoldAppProviders.localProvider}
+            //     price={props.price}
+            //     mainnetProvider={props.scaffoldAppProviders.mainnetProvider}
+            //   />
+            // ) : (
+            //   <></>
+            // )
           }
         </Col>
       </Row>

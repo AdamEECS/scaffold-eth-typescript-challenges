@@ -45,11 +45,11 @@ export const useScaffoldHooks = (
   // const yourMainnetBalance = useBalance(scaffoldAppProviders.mainnetProvider, currentEthersUser.address ?? '');
 
   // 💰 Then read your DAI balance like:
-  const myMainnetDAIBalance = useContractReader(mainnetContracts?.['DAI'], {
-    contractName: 'DAI',
-    functionName: 'balanceOf',
-    functionArgs: ['0x34aA3F359A9D614239015126635CE7732c18fDF3'],
-  });
+  // const myMainnetDAIBalance = useContractReader(mainnetContracts?.['DAI'], {
+  //   contractName: 'DAI',
+  //   functionName: 'balanceOf',
+  //   functionArgs: ['0x34aA3F359A9D614239015126635CE7732c18fDF3'],
+  // });
 
   // 🔥 This hook will get the price of Gas from ⛽️ EtherGasStation
   const gasPrice = useGasPrice(ethersContext.chainId, 'fast', getNetworkInfo(ethersContext.chainId));
@@ -73,13 +73,13 @@ export const useScaffoldHooks = (
     }
   );
 
-  useOnRepetition(
-    async (): Promise<void> =>
-      console.log(`⛓ A new localblock block is here: ${await scaffoldAppProviders.localProvider.blockNumber}`),
-    {
-      provider: scaffoldAppProviders.localProvider,
-    }
-  );
+  // useOnRepetition(
+  //   async (): Promise<void> =>
+  //     console.log(`⛓ A new localblock block is here: ${await scaffoldAppProviders.localProvider.blockNumber}`),
+  //   {
+  //     provider: scaffoldAppProviders.localProvider,
+  //   }
+  // );
 
   //----------------------
   // ✍🏽 writing to contracts
@@ -116,14 +116,14 @@ export const useScaffoldHooks = (
     ) {
       console.log('_____________________________________ 🏗 scaffold-eth _____________________________________');
       console.log('🌎 mainnetProvider', scaffoldAppProviders.mainnetProvider);
-      console.log('🏠 localChainId', scaffoldAppProviders.localProvider.network.chainId);
+      // console.log('🏠 localChainId', scaffoldAppProviders.localProvider.network.chainId);
       console.log('👩‍💼 selected address:', ethersContext.account);
       console.log('🕵🏻‍♂️ currentChainId:', currentChainId);
       console.log('💵 yourLocalBalance', yourLocalBalance ? ethers.utils.formatEther(yourLocalBalance) : '...');
       // console.log('💵 yourMainnetBalance', yourMainnetBalance ? ethers.utils.formatEther(yourMainnetBalance) : '...');
       console.log('📝 readContracts', readContracts);
       console.log('🌍 DAI contract on mainnet:', mainnetContracts);
-      console.log('💵 yourMainnetDAIBalance', myMainnetDAIBalance);
+      // console.log('💵 yourMainnetDAIBalance', myMainnetDAIBalance);
       console.log('🔐 writeContracts', writeContracts);
       console.log('⛽ gasPrice', gasPrice);
     }

@@ -23,11 +23,10 @@ if (DEBUG) console.log('📡 Connecting to Mainnet Ethereum');
 // const mainnetProvider = getDefaultProvider("mainnet", { infura: INFURA_ID, etherscan: ETHERSCAN_KEY, quorum: 1 });
 // const mainnetProvider = new InfuraProvider("mainnet",INFURA_ID);
 // attempt to connect to our own scaffold eth rpc and if that fails fall back to infura...
-const mainnetScaffoldEthProvider = new StaticJsonRpcProvider('https://rpc.scaffoldeth.io:48544');
+// const mainnetScaffoldEthProvider = new StaticJsonRpcProvider('https://rpc.scaffoldeth.io:48544');
 const mainnetInfura = new StaticJsonRpcProvider('https://mainnet.infura.io/v3/' + INFURA_ID);
 //const mainnetLightPool = new StaticJsonRpcProvider('https://main-light.eth.linkpool.io/');
-export const mainnetProvider =
-  mainnetScaffoldEthProvider && mainnetScaffoldEthProvider._network ? mainnetScaffoldEthProvider : mainnetInfura;
+export const mainnetProvider = mainnetInfura;
 
 export const targetProvider = targetNetworkInfo.rpcUrl;
 // -------------------
