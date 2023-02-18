@@ -12,7 +12,7 @@ const DEBUG = true;
 // -------------------
 // 📡 What chain are your contracts deployed to? 🤚🏽  Set your target frontend network
 // -------------------
-export const targetNetworkInfo: TNetworkInfo = NETWORKS.localhost;
+export const targetNetworkInfo: TNetworkInfo = NETWORKS.goerli;
 // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 if (DEBUG) console.log('📡 Connecting to Mainnet Ethereum');
 
@@ -29,6 +29,7 @@ const mainnetInfura = new StaticJsonRpcProvider('https://mainnet.infura.io/v3/' 
 export const mainnetProvider =
   mainnetScaffoldEthProvider && mainnetScaffoldEthProvider._network ? mainnetScaffoldEthProvider : mainnetInfura;
 
+export const targetProvider = targetNetworkInfo.rpcUrl;
 // -------------------
 // connecting to local provider
 // -------------------

@@ -114,14 +114,14 @@ export const Main: FC = () => {
             />
           </Route>
           {/* you can add routes here like the below examlples */}
-          <Route path="/hints">
+          {/* <Route path="/hints">
             <Hints
               address={ethersContext?.account ?? ''}
               yourCurrentBalance={yourCurrentBalance}
               mainnetProvider={scaffoldAppProviders.mainnetProvider}
               price={ethPrice}
             />
-          </Route>
+          </Route> */}
         </Switch>
       </BrowserRouter>
 

@@ -32,7 +32,7 @@ export const MainPageMenu: FC<IMainPageMenuProps> = (props) => (
         Debug
       </Link>
     </Menu.Item>
-    <Menu.Item key="/hints">
+    {/* <Menu.Item key="/hints">
       <Link
         onClick={() => {
           props.setRoute('/hints');
@@ -40,7 +40,7 @@ export const MainPageMenu: FC<IMainPageMenuProps> = (props) => (
         to="/hints">
         Hints
       </Link>
-    </Menu.Item>
+    </Menu.Item> */}
     {/* <Menu.Item key="/mainnetdai">
       <Link
         onClick={() => {

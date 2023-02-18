@@ -135,11 +135,11 @@ export const Dice: FC<DiceProps> = (props) => {
 
   return (
     <div style={{ display: "flex" }}>
-      <div style={{ width: 250, margin: "auto", marginTop: 64 }}>
+      <div style={{ width: 250, margin: "auto", marginTop: 32 }}>
         <div>Roll Events:</div>
         <List
           style={{ height: 258, overflow: "hidden" }}
-          dataSource={rollEvents}
+          dataSource={rollEvents.slice().reverse()}
           renderItem={item => {
             return (
               <List.Item
@@ -160,7 +160,7 @@ export const Dice: FC<DiceProps> = (props) => {
             Roll the dice!
           </Button>
           
-          <div style={{ padding: 16 }}>
+          {/* <div style={{ padding: 16 }}>
             <div style={{ padding: 16 }}>
               <Address address={readContracts?.RiggedRoll?.address} ensProvider={mainnetProvider} fontSize={24} />
               <div />
@@ -169,7 +169,7 @@ export const Dice: FC<DiceProps> = (props) => {
             <Button style={{ margin: 16 }} type="primary" disabled={diceRolled} onClick={riggedRoll}>
               Rigged Roll!
             </Button>
-          </div>
+          </div> */}
         
         </div>
         {diceRollImg}
@@ -178,14 +178,13 @@ export const Dice: FC<DiceProps> = (props) => {
         <div>Winner Events:</div>
         <List
           style={{ height: 258, overflow: "hidden" }}
-          dataSource={winnerEvents}
+          dataSource={winnerEvents.slice().reverse()}
           renderItem={item => {
             return (
               <List.Item
                 key={item.args[0] + " " + item.args[1] + " " + date.getTime() + " " + item.blockNumber}
               >
                 <Address address={item.args[0]} ensProvider={mainnetProvider} fontSize={16} />
-                <br></br>
                 <Balance address={undefined} balance={item.args[1]} price={ethPrice} />
               </List.Item>
             );

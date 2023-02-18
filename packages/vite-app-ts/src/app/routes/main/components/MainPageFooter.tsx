@@ -58,11 +58,12 @@ export const MainPageFooter: FC<IMainPageFooterProps> = (props) => {
             opacity: 1,
           }}>
           <Button
-            onClick={() => {
-              window.open('https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA');
-            }}
+            // onClick={() => {
+            //   window.open('https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA');
+            // }}
             size="large"
-            shape="round">
+            shape="round"
+            >
             <span
               style={{
                 marginRight: 8,
