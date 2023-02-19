@@ -26,21 +26,21 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironmentExtended) => {
 
     // paste in your front-end address here to get 10 balloons on deploy:
     await balloons.transfer(
-        "0x08C01CEc8B8c793D768f502b604113074CE212aD",
+        "0x7fd37e595aF288e5C9CAD0A5CbE289a9E5E2a322",
         "" + 10 * 10 ** 18
     );
 
     // // uncomment to init DEX on deploy:
-    // console.log(
-    //   "Approving DEX (" + dex.address + ") to take Balloons from main account..."
-    // );
-    // // If you are going to the testnet make sure your deployer account has enough ETH
-    // await balloons.approve(dex.address, ethers.utils.parseEther("100"));
-    // console.log("INIT exchange...");
-    // await dex.init(ethers.utils.parseEther("5"), {
-    //   value: ethers.utils.parseEther("5"),
-    //   gasLimit: 200000,
-    // });
+    console.log(
+      "Approving DEX (" + dex.address + ") to take Balloons from main account..."
+    );
+    // If you are going to the testnet make sure your deployer account has enough ETH
+    await balloons.approve(dex.address, ethers.utils.parseEther("100"));
+    console.log("INIT exchange...");
+    await dex.init(ethers.utils.parseEther("5"), {
+      value: ethers.utils.parseEther("5"),
+      gasLimit: 200000,
+    });
 
 };
 export default func;
