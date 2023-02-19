@@ -72,7 +72,12 @@ contract DEX {
     uint256 xInput,
     uint256 xReserves,
     uint256 yReserves
-  ) public view returns (uint256 yOutput) {}
+  ) public view returns (uint256 yOutput) {
+    uint256 xInputWithFee = xInput.mul(997);
+    uint256 numerator = xInputWithFee.mul(yReserves);
+    uint256 denominator = (xReserves.mul(1000)).add(xInputWithFee);
+    return (numerator / denominator);
+  }
 
   /**
    * @notice returns liquidity for a user. Note this is not needed typically due to the `liquidity()` mapping variable being public and having a getter as a result. This is left though as it is used within the front end code (App.jsx).
