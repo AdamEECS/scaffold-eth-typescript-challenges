@@ -12,7 +12,14 @@ import { transactor } from 'eth-components/functions';
 import { ethers } from 'ethers';
 
 import { useEventListener } from 'eth-hooks';
-import { MainPageMenu, MainPageContracts, MainPageFooter, MainPageHeader, DEX as DEX_UI, Events as EventsUI } from './components';
+import {
+  MainPageMenu,
+  MainPageContracts,
+  MainPageFooter,
+  MainPageHeader,
+  DEX as DEX_UI,
+  Events as EventsUI,
+} from './components';
 import { useAppContracts } from '~~/app/routes/main/hooks/useAppContracts';
 import { useScaffoldProviders as useScaffoldAppProviders } from '~~/app/routes/main/hooks/useScaffoldAppProviders';
 import { useBurnerFallback } from '~~/app/routes/main/hooks/useBurnerFallback';
@@ -100,14 +107,9 @@ export const Main: FC = () => {
   const gasPrice = useGasPrice(ethersContext.chainId, 'fast');
   const tx = transactor(ethComponentsSettings, ethersContext?.signer, gasPrice);
 
-  const [accountAddress] = useDebounce<string | undefined>(
-    ethersContext.account,
-    200,
-    {
-      trailing: true,
-    }
-  );
-
+  const [accountAddress] = useDebounce<string | undefined>(ethersContext.account, 200, {
+    trailing: true,
+  });
 
   return (
     <div className="App">
@@ -129,25 +131,31 @@ export const Main: FC = () => {
           </Route>
           <Route exact path="/events">
             <EventsUI
-              contract={readContracts["DEX"]}
+              contract={readContracts['Balloons']}
+              eventName="Approval"
+              mainnetProvider={scaffoldAppProviders.mainnetProvider}
+              startBlock={1}
+            />
+            <EventsUI
+              contract={readContracts['DEX']}
               eventName="EthToTokenSwap"
               mainnetProvider={scaffoldAppProviders.mainnetProvider}
               startBlock={1}
             />
             <EventsUI
-              contract={readContracts["DEX"]}
+              contract={readContracts['DEX']}
               eventName="TokenToEthSwap"
               mainnetProvider={scaffoldAppProviders.mainnetProvider}
               startBlock={1}
             />
             <EventsUI
-              contract={readContracts["DEX"]}
+              contract={readContracts['DEX']}
               eventName="LiquidityProvided"
               mainnetProvider={scaffoldAppProviders.mainnetProvider}
               startBlock={1}
             />
             <EventsUI
-              contract={readContracts["DEX"]}
+              contract={readContracts['DEX']}
               eventName="LiquidityRemoved"
               mainnetProvider={scaffoldAppProviders.mainnetProvider}
               startBlock={1}
